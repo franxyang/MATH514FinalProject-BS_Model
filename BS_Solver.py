@@ -42,6 +42,11 @@ class BSParams:
 def exact_solution(S, tau, p):
     """
     Generalized Black-Scholes Call Option Closed-form Solution (with dividends).
+    
+    Args:
+        S (array or float): Underlying asset price.
+        tau (float): Time to expiry.
+        p (BSParams): Parameter object.
     """
     # Avoid log(0)
     S_safe = np.where(S > 1e-8, S, 1e-8)
@@ -95,6 +100,12 @@ def get_boundary_vector(tau, p, M, gamma_full):
 def solve_ode_system(method, N, M, p):
     """
     Solve the ODE system dV/dtau = AV + b using specified time-stepping method.
+    
+    Args:
+        method (str): 'BackwardEuler' or 'BDF2'.
+        N (int): Number of time steps.
+        M (int): Number of spatial steps.
+        p (BSParams): Parameters.
     """
     dtau = p.T / N
     A, dS, S_inner, alpha, gamma = construct_system(M, p)

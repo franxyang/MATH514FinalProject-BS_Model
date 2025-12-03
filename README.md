@@ -15,7 +15,7 @@ Instead of traditional Finite Difference Methods (FDM) applied simultaneously to
 ### Core Objectives
 1.  **Model Construction**: Discretize the Black-Scholes PDE with a **Dividend Yield ($q$)** correction.
 2.  **Numerical Analysis**: Compare the stability and convergence of **Backward Euler** vs. **BDF2**.
-3.  **Validation**: Verify results against the exact solution and real-world market data (Apple Inc.).
+3.  **Validation**: Verify results against the exact solution and real-world market data (Apple Inc., NVDA, etc.).
 
 ## 🧮 Mathematical Methodology
 The solver addresses the generalized Black-Scholes PDE:
@@ -37,7 +37,7 @@ We empirically verified the theoretical Order of Convergence (EOC) for both meth
 * **Backward Euler**: Converged with order $\approx 1.0$.
 * **BDF2**: Converged with order $\approx 2.0$, providing superior accuracy for a given computational cost.
 
-![Convergence Plot](images/L-L_result.png)
+![Convergence Plot](images/spatial_impact_analysis.png)
 *Fig 1. Log-Log plot demonstrating temporal error convergence.*
 
 ### 2. Real-World Case Study: Apple Inc. (AAPL)
@@ -49,7 +49,7 @@ We priced AAPL Call Options expiring Jan 2026. The study highlighted the importa
 | **Market Price (Last)**| ~$9.15 | Potentially non-synchronous |
 | **Model Price** | **~$9.55** | with $q \approx 0.37\%$ correction |
 
-*The remaining discrepancy is analyzed in the notebook, attributed to the wide Bid-Ask spread and Implied Volatility (IV) synchronization issues.*
+*Detailed analysis of the Bid-Ask spread and the "NVDA Anomaly" is included in the notebook.*
 
 ### 3. The Greeks
 The project also numerically computes **Delta ($\Delta$)** and **Gamma ($\Gamma$)** via central differences. These sensitivities are critical for dynamic hedging strategies.
@@ -59,15 +59,18 @@ The project also numerically computes **Delta ($\Delta$)** and **Gamma ($\Gamma$
 
 ## 📂 Repository Structure
 ```text
-MATH514-BlackScholes-MOL/
+MATH514_FinalProject/
 │
-├── Final_Project_Main.ipynb    # Main source code (Derivation, Solver, Validation)
-├── requirements.txt            # Python dependencies
-├── README.md                   # Project documentation
-└── images/                     # Generated plots
+├── BS_Solver.py                    # [Core] Numerical engine (Class & Solvers)
+├── 01_Verification_Analysis.ipynb  # [Analysis] Math verification, EOC analysis, Greeks plotting
+├── 02_RealWorld_CaseStudy.ipynb    # [Analysis] Real-world validation (AAPL, NVDA, etc.)
+├── Report_Draft.pdf                # Final project paper
+├── requirement.txt                 # Dependencies
+├── README.md                       # Documentation
+└── images/                         # Generated plots
     ├── L-L_result.png
-    └── greeks_plot.png
-```
+    ├── greeks_plot.png
+    └── spatial_impact_analysis
 
 ## 🚀 How to Run
 
