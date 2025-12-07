@@ -88,14 +88,11 @@ MATH514_FinalProject/
     pip install -r requirements.txt
     ```
 
-3.  **Run the Notebooks**:
+3.  **Run the Notebook**:
 
     ```bash
-    jupyter notebook 01_Verification_Analysis.ipynb
-    jupyter notebook 02_RealWorld_CaseStudy.ipynb
+    jupyter notebook Final_Project_Main.ipynb
     ```
-
-    The real-world case study fetches market data via `yfinance`; if offline or the feed is flaky, pin parameters in the notebook to a cached scenario before running.
 
 ## 🛠 Dependencies
 
